@@ -9,7 +9,7 @@ using namespace std;
 class Person
 {
     protected:
-        int SSN;
+        long SSN;
         struct{
             int year;
             int month;
@@ -18,7 +18,7 @@ class Person
         string firstName;
         string lastName;
    public:
-        Person(int ssn, int day, int month, int year, string firstName, string lastName);
+        Person(long ssn, int day, int month, int year, string firstName, string lastName);
         //getSSN for filtering into the personLists.
         int getSSN();
         virtual void printPerson();
@@ -33,7 +33,7 @@ class Faculty : public Person
             int year;
         }joinDate;
     public:
-        Faculty(int ssn, int day, int month, int year, string firstName, string lastName, int joinMonth, int joinYear);
+        Faculty(long ssn, int day, int month, int year, string firstName, string lastName, int joinMonth, int joinYear);
         virtual void printPerson();
         ~Faculty();
 };
@@ -49,7 +49,7 @@ class Student : public Person
             int year;
         }classOf;
     public:
-        Student(int ssn, int day, int month, int year, string firstName, string lastName, int studentID, int classMonth, int classYear);
+        Student(long ssn, int day, int month, int year, string firstName, string lastName, int studentID, int classMonth, int classYear);
         virtual void printPerson();
         ~Student();
 

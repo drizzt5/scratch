@@ -1,6 +1,6 @@
 #include "person.h"
 //Person block of definitions
-Person::Person(int ssn, int day, int month, int year, string firstName, string lastName)
+Person::Person(long ssn, int day, int month, int year, string firstName, string lastName)
 {
     Person::SSN = ssn;
     Person::firstName = firstName;
@@ -19,7 +19,7 @@ int Person::getSSN()
   return Person::SSN;
 }
 //Faculty block of definitions
-Faculty::Faculty(int ssn, int day, int month, int year, string firstName, string lastName, int joinMonth, int joinYear) : Person(ssn, day, month, year, firstName, lastName)
+Faculty::Faculty(long ssn, int day, int month, int year, string firstName, string lastName, int joinMonth, int joinYear) : Person(ssn, day, month, year, firstName, lastName)
 {
     Faculty::joinDate.month = joinMonth;
     Faculty::joinDate.year = joinYear;
@@ -30,7 +30,7 @@ void Faculty::printPerson()
   cout << firstName << " " << lastName << ": SSN: " << SSN << " DOB: " << DOB.month << "/" << DOB.day << "/" << DOB.year << " Joined: " << joinDate.month << "/" << joinDate.year << endl;
 }
 //Student block of definitions
-Student::Student(int ssn, int day, int month, int year, string firstName, string lastName, int studentID, int classMonth, int classYear) : Person(ssn, day, month, year, firstName, lastName)
+Student::Student(long ssn, int day, int month, int year, string firstName, string lastName, int studentID, int classMonth, int classYear) : Person(ssn, day, month, year, firstName, lastName)
 {
     Student::classOf.month = classMonth;
     Student::classOf.year = classYear;

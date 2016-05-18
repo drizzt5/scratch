@@ -21,7 +21,7 @@ void PeopleList::append(Person* data)
 
 }
 
-int PeopleList::getNodeSSN()
+long PeopleList::getNodeSSN()
 {
     return tail->data->getSSN();
 }

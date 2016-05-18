@@ -16,7 +16,7 @@ class PeopleList {
         PeopleList();
         ~PeopleList();
         void append(Person* data);
-        int getNodeSSN();
+        long getNodeSSN();
 
 };
 #endif
