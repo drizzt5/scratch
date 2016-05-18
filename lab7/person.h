@@ -10,17 +10,19 @@ class Person
 {
     protected:
         long SSN;
-        struct{
-            int year;
-            int month;
-            int day;
-        }DOB;
+
         string firstName;
         string lastName;
    public:
+        struct dob{
+          int year;
+          int month;
+          int day;
+        }DOB;
         Person(long ssn, int day, int month, int year, string firstName, string lastName);
         //getSSN for filtering into the personLists.
         int getSSN();
+        bool checkDOB(int month, int day, int year);
         virtual void printPerson();
         ~Person();
 };

@@ -17,6 +17,7 @@ class PeopleList {
         ~PeopleList();
         void append(Person* data);
         long getNodeSSN();
+        void printBlock();
 
 };
 #endif

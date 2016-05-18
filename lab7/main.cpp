@@ -4,6 +4,9 @@
 #include <vector>
 #include "helper.h"
 #define FNAME "people.txt"
+
+//If you define test, you will simply load the people from your designated text file,
+//and print all of those who are loaded to the screen.
 int main(int argc, char **argv)
 {
     PeopleList peopleArray[10];
@@ -33,7 +36,6 @@ int main(int argc, char **argv)
               peopleArray[current->getSSN() % 10].append(current);
             }else if(person.size() == 8){
               Person *current = new Faculty(stringToInt(person[7]), stringToInt(person[6]), stringToInt(person[5]), stringToInt(person[4]), person[3], person[2], stringToInt(person[1]), stringToInt(person[0]));
-              cout << endl;
               peopleArray[current->getSSN() % 10].append(current);
             }else{
               Person *current = new Person(stringToInt(person[5]), stringToInt(person[4]), stringToInt(person[3]), stringToInt(person[2]), person[1], person[0]);
@@ -41,10 +43,30 @@ int main(int argc, char **argv)
             }
         }
     }
+#ifndef test
+    //Get user input based on arguments.
     for(int i = 1; i<argc; i++){
       string temp = argv[i];
       Person *current = promptDefinePerson(temp);
+      bool duplicate = false;
+      //Go through the peopleList to check for duplicates.
+      while(peopleArray[current->getSSN() % 10].head->data != NULL){
+        peopleArray[current->getSSN() % 10].head = peopleArray[current->getSSN() % 10].head->next;
+        if((peopleArray[current->getSSN() % 10].head->data->getSSN() == current->getSSN())&& (peopleArray[current->getSSN() % 10].head->data->checkDOB(current->DOB.month, current->DOB.day, current->DOB.year))){
+          duplicate = true;
+        }
+      }
+      if(!duplicate){
       peopleArray[current->getSSN() % 10].append(current);
+      }
     }
+#endif
+#ifdef test
+
+    for(int i = 0; i < 10; i++){
+      peopleArray[i].printBlock();
+    }
+#endif
+
     inputFile.close();
 }

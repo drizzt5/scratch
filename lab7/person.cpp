@@ -18,6 +18,10 @@ int Person::getSSN()
 {
   return Person::SSN;
 }
+bool Person::checkDOB(int month, int day, int year)
+{
+  return !((month == DOB.month) && (day == DOB.day) && (year == DOB.year)); 
+}
 //Faculty block of definitions
 Faculty::Faculty(long ssn, int day, int month, int year, string firstName, string lastName, int joinMonth, int joinYear) : Person(ssn, day, month, year, firstName, lastName)
 {

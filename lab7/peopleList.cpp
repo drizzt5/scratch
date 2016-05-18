@@ -26,6 +26,22 @@ long PeopleList::getNodeSSN()
     return tail->data->getSSN();
 }
 
+void PeopleList::printBlock()
+{
+  while(head->data != NULL){
+    head->data->printPerson();
+    head = head->next;
+  }
+}
 PeopleList::~PeopleList()
 {
+  int i = 0;
+  PersonNode *old;
+  while(i < count){
+    old = head;
+    head = head->next;
+    free(old);
+    i++;
+  }
+  free(tail);
 }
