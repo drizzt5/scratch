@@ -2,11 +2,8 @@
 #include "peopleList.h"
 #include <fstream>
 #include <vector>
-#include <sstream>
-#include <iomanip>
+#include "helper.h"
 #define FNAME "people.txt"
-//Person person *promptDefinePerson(string firstName);
-long stringToInt(string s);
 int main(int argc, char **argv)
 {
     PeopleList peopleArray[10];
@@ -44,14 +41,10 @@ int main(int argc, char **argv)
             }
         }
     }
+    for(int i = 1; i<argc; i++){
+      string temp = argv[i];
+      Person *current = promptDefinePerson(temp);
+      peopleArray[current->getSSN() % 10].append(current);
+    }
     inputFile.close();
-
-}
-
-long stringToInt(string s){
-  //Function written because stoi wasn't functioning for whatever reason.
-  stringstream ss(s);
-  long result;
-  ss >> result;
-  return result;
 }
