@@ -1,47 +1,32 @@
 #include "peopleList.h"
 PeopleList::PeopleList()
 {
-  PeopleList::head  = (PersonNode*)malloc(sizeof(PersonNode));
-  PeopleList::tail  = (PersonNode*)malloc(sizeof(PersonNode));
-  PeopleList::count = 0;
+  PeopleList::head  = NULL;
+  PeopleList::tail  = NULL;
 }
 
 void PeopleList::append(Person* data)
 {
-    if(head->data == NULL){
-      head->data = data;
-      head->next = tail;
-      tail->data = data;
-    }else{
-      PersonNode *current  = (PersonNode*)malloc(sizeof(PersonNode));
-      tail->next = current;
-      tail->data = data;
-    }
-    count++;
-
+  PersonNode *current  = new PersonNode(data, NULL);
+  if (head == NULL) {
+    head = current;
+    tail = current;
+  } else {
+    tail->next = current;
+    tail = current;
+  }
 }
-
-long PeopleList::getNodeSSN()
-{
-    return tail->data->getSSN();
-}
-
 void PeopleList::printBlock()
 {
-  while(head->data != NULL){
-    head->data->printPerson();
-    head = head->next;
-  }
+
 }
 PeopleList::~PeopleList()
 {
-  int i = 0;
-  PersonNode *old;
-  while(i < count){
-    old = head;
-    head = head->next;
-    free(old);
-    i++;
+  PersonNode* old = head;
+  while (old != NULL) {
+    delete old->data;
+    PersonNode* temp = old->next;
+    delete old;
+    old = temp;
   }
-  free(tail);
 }

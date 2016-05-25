@@ -9,6 +9,6 @@ Person *promptDefinePerson(string firstName);
 long stringToInt(string s);
 string capitalizeName(string name);
 bool verifySSN(string SSN);
-bool verifyDOB(string DOB);
+bool verifyDOB(int month, int day, int year);
 
 #endif
